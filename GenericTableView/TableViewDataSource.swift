@@ -31,10 +31,12 @@ final class TableViewDataSource<Item>:NSObject, UITableViewDataSource {
         
         print("descriptor :", descriptor)
         
-        if !reuseIdentifiers.contains(descriptor.reuseIdentifier) {
-            tableView.register(descriptor.cellClass, forCellReuseIdentifier: descriptor.reuseIdentifier)
-            reuseIdentifiers.insert(descriptor.reuseIdentifier)
-        }
+        // We don't need to register cell due we implemt it in storyboard. Try to change reuseIdentifier in  RecentItem extension.
+        
+//        if !reuseIdentifiers.contains(descriptor.reuseIdentifier) {
+//            tableView.register(descriptor.cellClass, forCellReuseIdentifier: descriptor.reuseIdentifier)
+//            reuseIdentifiers.insert(descriptor.reuseIdentifier)
+//        }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: descriptor.reuseIdentifier, for: indexPath)
         descriptor.configure(cell)
